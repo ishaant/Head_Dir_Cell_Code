@@ -47,4 +47,4 @@ title('Traces')
 
 %% Saving the spike locations
 
-uisave({'xloc','yloc'},'spike_locations_')
+uisave({'xloc','yloc','sigfn','siga'},'spike_locations_')

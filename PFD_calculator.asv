@@ -19,7 +19,7 @@ WA=zeros(bin_number,1);
 norm1=WA;
 WA_unnormed=WA;
 angle=WA;
-sigma_t=100;
+sigma_t=3;
 
 
 %%
@@ -102,7 +102,8 @@ for i=1:bin_number
     
 end
 %%
-polarplot(pi()/180.*angle([1:end,1]),WA([1:end 1]))
+polarplot(pi()/180.*angle(1:end,1),WA(1:end 1))
+rl=rlim
 hold on
 WA_x=WA.*cos(pi()/180.*angle);
 WA_y=WA.*sin(pi()/180.*angle);
@@ -110,8 +111,5 @@ WA_y=WA.*sin(pi()/180.*angle);
 theta=atan(sum(WA_y)/sum(WA_x));
 magn=sqrt((sum(WA_x))^2+(sum(WA_y))^2);
 
-temp=max(WA_x);
-rl=max(magn,temp);
-
 polarplot([0,theta],[0,magn])
-rlim([0 rl*1.1])
+rlim([0 0.05])
