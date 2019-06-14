@@ -1,0 +1,1 @@
+head_dir_binned=(ceil(head_dir/30)+floor(head_dir/30))*15;

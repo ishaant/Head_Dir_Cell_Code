@@ -1,11 +1,13 @@
-%%% Full MIN1PIPE program ONLY MODIFY PARAMETERS HERE NOT ON MIN1PIPE %%%
+clear all
+
+%%% Full MIN1PIPE program ONLY MODIFY PARAMETERS HERE NOT ON MIN1PIPE %%%   
 
 % This file will analyse the video and save outputs needed for the
 % spike_finder, rayleigh plotting as well as CellReg
 
 %% session-specific parameter initialization %% 
-Fsi = 20;
-Fsi_new = 20; %%% no temporal downsampling %%%
+Fsi = 30;
+Fsi_new = 30; %%% no temporal downsampling %%%
 spatialr = 0.5; %%% no spatial downsampling %%%
 se = 5; %%% structure element for background removal %%%
 ismc = true; %%% run movement correction %%%
@@ -65,6 +67,7 @@ axis tight
 axis square
 title('Traces')
 
+
 %% make a movie %%
 
 load(fname)
@@ -99,7 +102,7 @@ for ii = 1: nbatch
     datar = datar(1: dss: end, 1: dss: end, :);
     for i = 1: dst: size(dataraw, 3)
         if i==1
-         clf
+        clf
         subplot(1, 3, 1, 'align')
         imagesc(dataraw(:, :, i + idbatch(ii) - 1), [0, 1])
         axis off
@@ -160,3 +163,10 @@ close(v)
 if ifpost
     real_neuron_select
 end
+
+%% Saving cell Reg input
+
+            load(uigetfile)
+            file_name_to_save_cellreg = [fname(1: id), 'cell_reg_final'];
+            cellreg_inp=reshape(roifnr,240,376,size(roifnr,2));
+            save(file_name_to_save_cellreg, 'cellreg_inp');

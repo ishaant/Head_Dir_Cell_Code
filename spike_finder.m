@@ -29,7 +29,7 @@ end
 for i = 1: size(sigt, 1)
     abc=sigt(i,:);
     
-    [peak,loc]= findpeaks(sigt(i,:),'MinPeakDistance',2,'MinPeakProminence',2*std(sigt(i,:)));
+    [peak,loc]= findpeaks(sigt(i,:),'MinPeakDistance',2,'MinPeakProminence',2*std(sigt(i,:))); %check these parameters
     
     for j=1:size(peak,2)
         xloc(i,j)=loc(j);
