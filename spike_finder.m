@@ -15,6 +15,8 @@ load(filename)
     xloc=zeros(size(siga, 1),100);
     yloc=zeros(size(siga, 1),100);
     
+%     siga=siga([1:(floor(size(siga, 2)/30)*30)]);
+    sigt=[];
 
 for i = 1: size(siga, 1)
     siga(i, :) = normalize(siga(i, :));

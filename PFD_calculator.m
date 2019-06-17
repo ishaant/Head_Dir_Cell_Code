@@ -1,5 +1,11 @@
 %%
-neuron=3;
+close all
+
+for x=1:size(sigfn,1)
+neuron=x;
+
+disp(x);
+
 bin_size=30;
 
 head_dir_binned=(ceil(head_dir/bin_size)+floor(head_dir/bin_size))*bin_size/2;
@@ -26,7 +32,6 @@ sigma_t=100;
 for i=1:bin_number
     
     angle(i)=(2*i-1)*bin_size/2;
-    disp(angle(i));
     
     for j=1:length(head_dir_binned)
         
@@ -49,7 +54,6 @@ end
 for i=1:bin_number
     
     angle(i)=(2*i-1)*bin_size/2;
-    disp(angle(i));
     
     indx1=1;    
     indx2=1;    
@@ -102,16 +106,28 @@ for i=1:bin_number
     
 end
 %%
+figure
 polarplot(pi()/180.*angle([1:end,1]),WA([1:end 1]))
 hold on
 WA_x=WA.*cos(pi()/180.*angle);
 WA_y=WA.*sin(pi()/180.*angle);
 
 theta=atan(sum(WA_y)/sum(WA_x));
+
+    if sum(WA_x)<0
+       
+        theta=theta+pi;
+       
+    end
+
+
 magn=sqrt((sum(WA_x))^2+(sum(WA_y))^2);
 
-temp=max(WA_x);
+temp=max(WA);
 rl=max(magn,temp);
 
 polarplot([0,theta],[0,magn])
 rlim([0 rl*1.1])
+title(['Neuron No.= ' num2str(x)])
+hold off
+end

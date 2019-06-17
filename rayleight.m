@@ -20,4 +20,3 @@ for i=1:size(xloc,1) %change according to how many neurons you want to analyse
             title(['Neuron No.= ' num2str(i) ', No. Significant Spikes= ' num2str(j-1)])
         end
 end
-hold off
