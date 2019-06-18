@@ -1,7 +1,11 @@
 %%
 close all
+load(uigetfile('*.mat','Select the mscam_refined data for the desired session','msCam_data_processed_refined'));
 
+%%
 for x=1:size(sigfn,1)
+
+    
 neuron=x;
 
 disp(x);
