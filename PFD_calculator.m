@@ -1,6 +1,6 @@
 %%
 close all
-load(uigetfile('*.mat','Select the mscam_refined data for the desired session','msCam_data_processed_refined'));
+
 
 %%
 for x=1:size(sigfn,1)
@@ -131,7 +131,7 @@ temp=max(WA);
 rl=max(magn,temp);
 
 polarplot([0,theta],[0,magn])
-rlim([0 rl*1.1])
+%rlim([0 0.5])
 title(['Neuron No.= ' num2str(x)])
 hold off
 end
