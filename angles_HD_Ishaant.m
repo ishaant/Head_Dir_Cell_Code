@@ -44,6 +44,7 @@ rose(c.*(2*pi()/360),40)
 figure
 polarhistogram(c.*(2*pi()/360),40)
 head_dir=c;
+id = find(fname == '.', 1, 'last');
 uisave('head_dir',['head_dir_', fname(1:id-1)])
 
 %  file_name_to_save_angles = [path_name, file_base{i}, '_cellreg_input.mat'];
