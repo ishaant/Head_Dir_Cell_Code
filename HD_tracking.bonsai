@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.3.0">
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision" xmlns="https://horizongir.org/bonsai">
+    <Nodes>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:FileCapture">
+          <q1:FileName>D:\CasanovaJP\2019\data\ADn_project\mouse_5\H14_M22_S8_mouse_5_context_B_remote-05062019\behavcam_edited.avi</q1:FileName>
+          <q1:PlaybackRate>300</q1:PlaybackRate>
+          <q1:StartPosition>0</q1:StartPosition>
+          <q1:PositionUnits>Frames</q1:PositionUnits>
+          <q1:Loop>true</q1:Loop>
+          <q1:Playing>true</q1:Playing>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Source.Centroid</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:LargestBinaryRegion" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:FindContours">
+          <q1:Mode>External</q1:Mode>
+          <q1:Method>ChainApproxNone</q1:Method>
+          <q1:Offset>
+            <q1:X>0</q1:X>
+            <q1:Y>0</q1:Y>
+          </q1:Offset>
+          <q1:MinArea>0</q1:MinArea>
+          <q1:MaxArea xsi:nil="true" />
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:HsvThreshold">
+          <q1:Lower>
+            <q1:Val0>0</q1:Val0>
+            <q1:Val1>100</q1:Val1>
+            <q1:Val2>35</q1:Val2>
+            <q1:Val3>0</q1:Val3>
+          </q1:Lower>
+          <q1:Upper>
+            <q1:Val0>94</q1:Val0>
+            <q1:Val1>255</q1:Val1>
+            <q1:Val2>255</q1:Val2>
+            <q1:Val3>255</q1:Val3>
+          </q1:Upper>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:BinaryRegionAnalysis" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:BinaryRegionAnalysis" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:FindContours">
+          <q1:Mode>External</q1:Mode>
+          <q1:Method>ChainApproxNone</q1:Method>
+          <q1:Offset>
+            <q1:X>0</q1:X>
+            <q1:Y>0</q1:Y>
+          </q1:Offset>
+          <q1:MinArea>0</q1:MinArea>
+          <q1:MaxArea xsi:nil="true" />
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:LargestBinaryRegion" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:HsvThreshold">
+          <q1:Lower>
+            <q1:Val0>121</q1:Val0>
+            <q1:Val1>121</q1:Val1>
+            <q1:Val2>109</q1:Val2>
+            <q1:Val3>0</q1:Val3>
+          </q1:Lower>
+          <q1:Upper>
+            <q1:Val0>0</q1:Val0>
+            <q1:Val1>215</q1:Val1>
+            <q1:Val2>255</q1:Val2>
+            <q1:Val3>255</q1:Val3>
+          </q1:Upper>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Source.Centroid</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:CropPolygon">
+          <q1:Regions>
+            <q1:ArrayOfPoint>
+              <q1:Point>
+                <q1:X>61</q1:X>
+                <q1:Y>28</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>61</q1:X>
+                <q1:Y>28</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>61</q1:X>
+                <q1:Y>28</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>61</q1:X>
+                <q1:Y>28</q1:Y>
+              </q1:Point>
+            </q1:ArrayOfPoint>
+            <q1:ArrayOfPoint>
+              <q1:Point>
+                <q1:X>62</q1:X>
+                <q1:Y>382</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>60</q1:X>
+                <q1:Y>382</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>60</q1:X>
+                <q1:Y>382</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>62</q1:X>
+                <q1:Y>382</q1:Y>
+              </q1:Point>
+            </q1:ArrayOfPoint>
+            <q1:ArrayOfPoint>
+              <q1:Point>
+                <q1:X>61</q1:X>
+                <q1:Y>381</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>61</q1:X>
+                <q1:Y>381</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>61</q1:X>
+                <q1:Y>381</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>61</q1:X>
+                <q1:Y>381</q1:Y>
+              </q1:Point>
+            </q1:ArrayOfPoint>
+            <q1:ArrayOfPoint>
+              <q1:Point>
+                <q1:X>61</q1:X>
+                <q1:Y>381</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>60</q1:X>
+                <q1:Y>381</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>60</q1:X>
+                <q1:Y>381</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>61</q1:X>
+                <q1:Y>381</q1:Y>
+              </q1:Point>
+            </q1:ArrayOfPoint>
+            <q1:ArrayOfPoint>
+              <q1:Point>
+                <q1:X>60</q1:X>
+                <q1:Y>381</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>61</q1:X>
+                <q1:Y>381</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>61</q1:X>
+                <q1:Y>381</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>60</q1:X>
+                <q1:Y>381</q1:Y>
+              </q1:Point>
+            </q1:ArrayOfPoint>
+            <q1:ArrayOfPoint>
+              <q1:Point>
+                <q1:X>59</q1:X>
+                <q1:Y>381</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>60</q1:X>
+                <q1:Y>381</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>60</q1:X>
+                <q1:Y>381</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>59</q1:X>
+                <q1:Y>381</q1:Y>
+              </q1:Point>
+            </q1:ArrayOfPoint>
+            <q1:ArrayOfPoint>
+              <q1:Point>
+                <q1:X>60</q1:X>
+                <q1:Y>382</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>61</q1:X>
+                <q1:Y>382</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>61</q1:X>
+                <q1:Y>382</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>60</q1:X>
+                <q1:Y>382</q1:Y>
+              </q1:Point>
+            </q1:ArrayOfPoint>
+            <q1:ArrayOfPoint>
+              <q1:Point>
+                <q1:X>61</q1:X>
+                <q1:Y>382</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>63</q1:X>
+                <q1:Y>382</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>63</q1:X>
+                <q1:Y>383</q1:Y>
+              </q1:Point>
+              <q1:Point>
+                <q1:X>61</q1:X>
+                <q1:Y>383</q1:Y>
+              </q1:Point>
+            </q1:ArrayOfPoint>
+          </q1:Regions>
+          <q1:MaskType>ToZero</q1:MaskType>
+          <q1:FillValue>
+            <q1:Val0>0</q1:Val0>
+            <q1:Val1>0</q1:Val1>
+            <q1:Val2>0</q1:Val2>
+            <q1:Val3>0</q1:Val3>
+          </q1:FillValue>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Zip" />
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge>
+        <From>0</From>
+        <To>11</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>1</From>
+        <To>12</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>2</From>
+        <To>1</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>3</From>
+        <To>6</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>4</From>
+        <To>3</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>5</From>
+        <To>2</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>6</From>
+        <To>8</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>7</From>
+        <To>5</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>8</From>
+        <To>10</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>9</From>
+        <To>7</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>10</From>
+        <To>12</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>11</From>
+        <To>4</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>11</From>
+        <To>9</To>
+        <Label>Source1</Label>
+      </Edge>
+    </Edges>
+  </Workflow>
+  <ExtensionTypes>
+    <Type>Bonsai.Vision.FileCapture, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.LargestBinaryRegion, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.FindContours, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.HsvThreshold, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.BinaryRegionAnalysis, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.CropPolygon, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+  </ExtensionTypes>
+</WorkflowBuilder>
