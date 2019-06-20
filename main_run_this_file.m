@@ -9,7 +9,7 @@ clear all
 Fsi = 30;
 Fsi_new = 30; %%% no temporal downsampling %%%
 spatialr = 0.5; %%% no spatial downsampling %%%
-se = 5; %%% structure element for background removal %%%
+se = 10; %%% structure element for background removal %%%
 ismc = true; %%% run movement correction %%%
 flag = 1; %%% use auto seeds selection; 2 if manual %%%
 % isvis = true; %%% do visualize %%%
