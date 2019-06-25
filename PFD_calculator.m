@@ -3,7 +3,7 @@ close all
 
 
 %%
-for x=1:size(sigfn,1)
+for x=50:50
 
     
 neuron=x;
@@ -19,8 +19,6 @@ min_array_size=min(size(head_dir_binned,2),size(sigfn,2));
 head_dir_binned=(head_dir_binned(1:min_array_size));
 
 sigfn=sigfn(1:end,1:min_array_size);
-
-
 
 bin_number=360/bin_size;
 count=zeros(bin_number,1);

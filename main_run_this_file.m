@@ -169,4 +169,5 @@ end
             load(uigetfile)
             file_name_to_save_cellreg = [fname(1: id), 'cell_reg_final'];
             cellreg_inp=reshape(roifnr,240,376,size(roifnr,2));
+            cellreg_inp=permute(cellreg_inp,[3 1 2]);
             save(file_name_to_save_cellreg, 'cellreg_inp');
