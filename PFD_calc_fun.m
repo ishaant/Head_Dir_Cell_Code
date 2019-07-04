@@ -8,7 +8,7 @@ function []=PFD_calc_fun(inp,head_dir,sigfn)
 
   %  disp(x);
 
-    bin_size=30;
+    bin_size=6;
 
     head_dir_binned=(ceil(head_dir/bin_size)+floor(head_dir/bin_size))*bin_size/2;
 
@@ -101,15 +101,17 @@ function []=PFD_calc_fun(inp,head_dir,sigfn)
                norm1(i)=norm1(i)+(1-exp(-1*t^2/(2*sigma_t^2)));            
             end
 
-            WA(i)=WA_unnormed(i)/norm1(i);
+            WA(i)=WA(i)+WA_unnormed(i)/norm1(i);
 
         end
+        
+        WA(i)=WA(i)/count(i);
 
 
     end
     %%
     %figure
-    polarplot(pi()/180.*angle([1:end,1]),WA([1:end 1]))
+    polarplot(pi()/180.*angle([1:end,1]),WA([1:end,1]))
     hold on
     WA_x=WA.*cos(pi()/180.*angle);
     WA_y=WA.*sin(pi()/180.*angle);

@@ -2,16 +2,21 @@
 close all
 
 
+bin_size=6;
+
+
+
+bin_number=360/bin_size;
+
+contrl=zeros(size(sigfn,1),bin_number);
 %%
-for x=50:50
+for x=size(sigfn,1):-1:1
 
     
 neuron=x;
 
 disp(x);
-
-bin_size=30;
-
+count=zeros(bin_number,1);
 head_dir_binned=(ceil(head_dir/bin_size)+floor(head_dir/bin_size))*bin_size/2;
 
 min_array_size=min(size(head_dir_binned,2),size(sigfn,2));
@@ -19,9 +24,6 @@ min_array_size=min(size(head_dir_binned,2),size(sigfn,2));
 head_dir_binned=(head_dir_binned(1:min_array_size));
 
 sigfn=sigfn(1:end,1:min_array_size);
-
-bin_number=360/bin_size;
-count=zeros(bin_number,1);
 
 WA=zeros(bin_number,1);
 norm1=WA;
@@ -87,27 +89,49 @@ for i=1:bin_number
 end
 
 %%
-
-
-for i=1:bin_number
-
-    for j=1:count(i)
-        
-        for k=t_b_in{i}(j):t_b_f{i}(j)
-
-            t=k-t_b_in{i}(j)+1;
-            
-          WA_unnormed(i)=WA_unnormed(i)+(1-exp(-1*t^2/(2*sigma_t^2)))*sigfn(neuron,k);
-           norm1(i)=norm1(i)+(1-exp(-1*t^2/(2*sigma_t^2)));            
-        end
-        
-        WA(i)=WA_unnormed(i)/norm1(i);
-        
+%     for i=1:bin_number
+% 
+%         for j=1:count(i)
+% 
+%             for k=t_b_in{i}(j):t_b_f{i}(j)
+% 
+%                 t=k-t_b_in{i}(j)+1;
+% 
+%               WA_unnormed(i)=WA_unnormed(i)+10^sigfn(neuron,k);
+%                norm1(i)=t;            
+%             end
+% 
+%             WA(i)=WA(i)+WA_unnormed(i)/norm1(i);
+% 
+%         end
+%         
+%         WA(i)=WA(i)/count(i);
+ 
+ 
+%     end
+     for i=1:bin_number
+ 
+         for j=1:count(i)
+ 
+             for k=t_b_in{i}(j):t_b_f{i}(j)
+ 
+                 t=k-t_b_in{i}(j)+1;
+ 
+               WA_unnormed(i)=WA_unnormed(i)+(1-exp(-1*t^2/(2*sigma_t^2)))*sigfn(neuron,k);
+                norm1(i)=norm1(i)+(1-exp(-1*t^2/(2*sigma_t^2)));            
+             end
+ 
+             WA(i)=WA(i)+WA_unnormed(i)/norm1(i);
+ 
+         end
+         
+          WA(i)=WA(i)/count(i);
+ 
+ 
     end
-    
-    
-end
 %%
+
+contrl(x,:)=WA;
 figure
 polarplot(pi()/180.*angle([1:end,1]),WA([1:end 1]))
 hold on
