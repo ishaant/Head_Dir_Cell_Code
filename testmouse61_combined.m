@@ -27,11 +27,7 @@ for i=size(cell_registered_struct.cell_to_index_map,1):-1:1
      if plot_num==3
 
  count=count+1
- 
-%   if mod(count,5)==1
-%       figure('units','normalized','outerposition',[0.2 0.2 0.7 0.7])
-%  
-%   end
+
 %% Session 1
 if cell_registered_struct.cell_to_index_map(i,xyz)~=0
     

@@ -1,6 +1,11 @@
 
 clc
+
+%Selecting the relevant HD file from Bonsai
+
 [fname, pname]=uigetfile('*.csv');
+
+%% Stuff to make saving easier
 
 %Create fully-formed filename as a string
 filename = fullfile(pname, fname);
@@ -22,10 +27,12 @@ for i=1:length(a)
     
      c(i)=atand(m(i));
     
+     %Expanding the range from (-90 to 90) to (0 to 360)
+    
     if a(i,3)<a(i,1)
         if a(i,4)>a(i,2)
      
-            c(i)=c(i)+360;
+            c(i)=c(i)+360;              
         end
     end
             
@@ -40,14 +47,10 @@ end
 figure
 hist(c)
 figure
-rose(c.*(2*pi()/360),40)
+rose(c.*(2*pi()/360),40)    %Input is needed in radians
 figure
 polarhistogram(c.*(2*pi()/360),40)
 head_dir=c;
 id = find(fname == '.', 1, 'last');
 uisave('head_dir',['head_dir_', fname(1:id-1)])
 
-%  file_name_to_save_angles = [path_name, file_base{i}, '_cellreg_input.mat'];
-%             cellreg_inp=reshape(roifnr,240,376,size(roifnr,2));
-%             save(file_name_to_save_cellreg, 'cellreg_inp');
-% 
