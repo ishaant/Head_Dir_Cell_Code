@@ -1,6 +1,8 @@
+%Just plots an angular histyogram of fluorescence spikes
+
 %Note: We need to run both angles_HD and spike_finder before running this
 
-lim_spike=4; %minimum number of signmificant spikes to consider neuron fopr hitogram plot
+lim_spike=4; %minimum number of signmificant spikes to consider neuron for hitogram plot
 
 
 for i=1:size(xloc,1) %change according to how many neurons you want to analyse

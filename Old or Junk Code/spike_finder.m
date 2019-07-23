@@ -1,3 +1,6 @@
+% Calculates spike timings for all neurons according to specified
+% parameters
+
 %% Selecting the Min1Pipe output for the required session
 
 [fname, pname]=uigetfile('*.mat','Select the mscam_refined data for the desired session','msCam_data_processed_refined');
@@ -31,7 +34,7 @@ end
 for i = 1: size(sigt, 1)
     abc=sigt(i,:);
     
-    [peak,loc]= findpeaks(sigt(i,:),'MinPeakDistance',2,'MinPeakProminence',2*std(sigt(i,:))); %check these parameters
+    [peak,loc]= findpeaks(sigt(i,:),'MinPeakDistance',2,'MinPeakProminence',2*std(sigt(i,:))); %CHECK THESE PARAMETERS
     
     for j=1:size(peak,2)
         xloc(i,j)=loc(j);

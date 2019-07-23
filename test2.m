@@ -10,7 +10,7 @@ close all
 
  figure('units','normalized','outerposition',[0.2 0.2 0.7 0.7])
 
-count=-1+0.075;
+count=0;
 
 for i=size(cell_registered_struct.cell_to_index_map,1):-1:1
    

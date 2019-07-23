@@ -3,10 +3,10 @@
 %I use this to troubleshoot the function
 
 
-% close all
+close all
 
 
-bin_size=3; %Specify the desired Bin Size (Only take even divisors of 360)
+bin_size=6; %Specify the desired Bin Size (Only take even divisors of 360)
 
 bin_number=360/bin_size; %Calculates total number of bins
 
@@ -27,7 +27,7 @@ sigfn=sigfn(1:end,1:min_array_size);
 
 %% Looping and plotting for each neuron
 
-for x=5 %size(sigfn,1):-1:1  % You can change the range of x if you dont want the complete output each time
+for x=size(sigfn,1):-1:1  % You can change the range of x if you dont want the complete output each time
 
     
 neuron=x;
@@ -148,11 +148,12 @@ end
   
                   t= k-t_b_in{i}(j)+1; %Time from start of passage
   
-                WA_unnormed(i)=WA_unnormed(i)+(1-exp(-1*t^2/(2*sigma_t^2)))*sigfn(neuron,k);  %Implementation of the function in the poster
-                 norm1(i)=norm1(i)+(1-exp(-1*t^2/(2*sigma_t^2)));            %Calculating the normalising factor
+                WA_unnormed(i)=WA_unnormed(i)+sigfn(neuron,k);  %Implementation of the function in the poster
+                            %Calculating the normalising factor
               end
+              norm1(i)=norm(i)+t; 
   
-              WA(i)=WA(i)+WA_unnormed(i)/norm1(i); 
+              WA(i)=WA(i)+WA_unnormed(i)/t;
   
           end
           
@@ -161,7 +162,6 @@ end
   
      end
 %%
-
 % contrl(x,:)=WA;  %For troubleshooting
 
 figure
@@ -195,7 +195,6 @@ polarplot([0,theta(x)],[0,magn])
 
 title(['Neuron No.= ' num2str(x)])
 hold off
-
 %% Rayleigh Test Parameters (Not needed/can be commented out)
 [pval,zval]=circ_rtest(circ_ang2rad(angle), WA, circ_ang2rad(bin_size));
 

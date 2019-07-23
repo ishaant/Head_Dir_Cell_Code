@@ -1,5 +1,6 @@
 function []=PFD_calc_fun(inp,head_dir,sigfn)
 
+%functional form of the PFD Calculator Code
 
     for x=inp %1:size(sigfn,1)
 
