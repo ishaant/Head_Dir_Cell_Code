@@ -27,7 +27,7 @@ sigfn=sigfn(1:end,1:min_array_size);
 
 %% Looping and plotting for each neuron
 
-for x=5 %size(sigfn,1):-1:1  % You can change the range of x if you dont want the complete output each time
+for x=size(sigfn,1):-1:1  % You can change the range of x if you dont want the complete output each time
 
     
 neuron=x;
